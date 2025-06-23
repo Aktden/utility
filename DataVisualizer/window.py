@@ -182,7 +182,6 @@ class VisualizerWindow(QMainWindow):
         self.update_checkbox_statuses()
 
     def update_checkbox_statuses(self):
-        """Обновляет статусы чекбоксов в зависимости от доступных данных"""
         if not self.current_file:
             for group in [self.checkboxes1, self.checkboxes2, self.checkboxes3]:
                 for cb in group.values():
@@ -257,7 +256,6 @@ class VisualizerWindow(QMainWindow):
                     cb.checkbox.setEnabled(False)
 
     def select_file(self):
-        """Выбор файла для анализа"""
         file_path, _ = QFileDialog.getOpenFileName(
             self,  # parent
             "Выберите файл данных",  # caption
@@ -274,7 +272,6 @@ class VisualizerWindow(QMainWindow):
             self.run_btn.setEnabled(True)
 
     def clear_file(self):
-        """Очистка выбранного файла"""
         self.current_file = None
         self.file_label.setText("Файл не выбран")
         self.file_label.setToolTip("")
@@ -284,7 +281,6 @@ class VisualizerWindow(QMainWindow):
         self.save_btn.setEnabled(False)
 
     def log_message(self, message, level="info"):
-        """Добавление сообщения в лог"""
         colors = {
             "info": "#ffffff",
             "success": "#5dc252",
@@ -309,12 +305,11 @@ class VisualizerWindow(QMainWindow):
         self.log_output.ensureCursorVisible()
 
     def run_analysis(self):
-        """Запуск анализа данных"""
         if not self.current_file:
             self.log_message("Файл не выбран!", "error")
             return
 
-        # Собираем выбранные опции
+       
         options = {
             "data_info": self.checkboxes1["Информация о данных"].checkbox.isChecked(),
             "histograms": self.checkboxes1["Гистограммы"].checkbox.isChecked(),
@@ -360,7 +355,6 @@ class VisualizerWindow(QMainWindow):
         self.analysis_thread.start()
 
     def on_analysis_complete(self, report_path):
-        """Обработка завершения анализа"""
         self.last_report_path = report_path
         self.run_btn.setEnabled(True)
         self.select_btn.setEnabled(True)
@@ -370,7 +364,6 @@ class VisualizerWindow(QMainWindow):
         self.status_bar.showMessage("Анализ завершен", 5000)
 
     def on_analysis_error(self, error_msg):
-        """Обработка ошибки анализа"""
         self.run_btn.setEnabled(True)
         self.select_btn.setEnabled(True)
         self.clear_btn.setEnabled(True)
@@ -385,7 +378,6 @@ class VisualizerWindow(QMainWindow):
         self.progress_bar.setValue(0)
 
     def save_report(self):
-        """Сохранение отчета в выбранное место"""
         if not self.last_report_path:
             self.log_message("Нет отчета для сохранения", "error")
             return
