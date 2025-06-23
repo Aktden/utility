@@ -17,7 +17,7 @@ from analysis_thread import AnalysisThread
 class VisualizerWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("DataVisualizer - Анализатор данных")
+        self.setWindowTitle("DataVisual")
         self.resize(1000, 800)
         self.current_file = None
         self.analysis_thread = None
