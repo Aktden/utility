@@ -21,12 +21,11 @@ class VisualizerWindow(QMainWindow):
         self.resize(1000, 800)
         self.current_file = None
         self.analysis_thread = None
-        self.last_report_path = None  # Хранение пути к последнему отчету
+        self.last_report_path = None  
 
         
         TelegramStyle.apply(self)
 
-        # Main widget and layout
         main_widget = QWidget()
         self.setCentralWidget(main_widget)
         self.layout = QVBoxLayout(main_widget)
@@ -291,7 +290,6 @@ class VisualizerWindow(QMainWindow):
         timestamp = datetime.now().strftime("%H:%M:%S")
         formatted_message = f"[{timestamp}] {message}"
 
-        # Создаем формат текста с цветом
         format = QTextCharFormat()
         format.setForeground(QColor(colors.get(level, "#ffffff")))
 
