@@ -123,7 +123,7 @@ class VisualizerWindow(QMainWindow):
         grid = QGridLayout()
         grid.addWidget(group1, 0, 0)
         grid.addWidget(group2, 0, 1)
-        grid.addWidget(group3, 1, 0, 1, 2)  # Span two columns for the third group
+        grid.addWidget(group3, 1, 0, 1, 2)
         content_layout.addLayout(grid)
         content_layout.addStretch()
 
@@ -144,7 +144,7 @@ class VisualizerWindow(QMainWindow):
         self.save_btn = QPushButton("Сохранить отчет")
         self.save_btn.setFixedHeight(40)
         self.save_btn.setCursor(Qt.PointingHandCursor)
-        self.save_btn.setEnabled(False)  # Неактивна до генерации отчета
+        self.save_btn.setEnabled(False) 
         bottom_layout.addWidget(self.save_btn)
 
         self.layout.addWidget(bottom_panel)
