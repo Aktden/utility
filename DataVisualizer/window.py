@@ -23,7 +23,7 @@ class VisualizerWindow(QMainWindow):
         self.analysis_thread = None
         self.last_report_path = None  # Хранение пути к последнему отчету
 
-        # Apply Telegram style
+        
         TelegramStyle.apply(self)
 
         # Main widget and layout
@@ -33,7 +33,7 @@ class VisualizerWindow(QMainWindow):
         self.layout.setSpacing(10)
         self.layout.setContentsMargins(15, 15, 15, 15)
 
-        # Header with icon
+       
         self.header = QWidget()
         header_layout = QHBoxLayout(self.header)
         header_layout.setContentsMargins(0, 0, 0, 0)
@@ -45,10 +45,10 @@ class VisualizerWindow(QMainWindow):
         header_layout.addWidget(self.title_label, alignment=Qt.AlignLeft)
         header_layout.addStretch()
 
-        # Add header to main layout
+        
         self.layout.addWidget(self.header)
 
-        # File selection panel
+       
         self.file_panel = QWidget()
         file_panel_layout = QHBoxLayout(self.file_panel)
         file_panel_layout.setContentsMargins(0, 0, 0, 0)
@@ -71,7 +71,7 @@ class VisualizerWindow(QMainWindow):
 
         self.layout.addWidget(self.file_panel)
 
-        # Checkboxes in scroll area
+        
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)
         scroll.setFrameShape(QFrame.NoFrame)
@@ -81,7 +81,7 @@ class VisualizerWindow(QMainWindow):
         content_layout.setSpacing(15)
         content_layout.setContentsMargins(5, 5, 5, 5)
 
-        # Visualization options
+        
         group1 = QGroupBox("Основные визуализации")
         group1.setFont(QFont("Segoe UI", 12, QFont.Bold))
         g1_layout = QVBoxLayout()
@@ -120,7 +120,7 @@ class VisualizerWindow(QMainWindow):
             g3_layout.addWidget(cb)
         group3.setLayout(g3_layout)
 
-        # Grid layout for groups
+        
         grid = QGridLayout()
         grid.addWidget(group1, 0, 0)
         grid.addWidget(group2, 0, 1)
@@ -131,7 +131,7 @@ class VisualizerWindow(QMainWindow):
         scroll.setWidget(content)
         self.layout.addWidget(scroll)
 
-        # Bottom panel with run button
+        
         bottom_panel = QWidget()
         bottom_panel.setFixedHeight(60)
         bottom_layout = QHBoxLayout(bottom_panel)
@@ -150,7 +150,7 @@ class VisualizerWindow(QMainWindow):
 
         self.layout.addWidget(bottom_panel)
 
-        # Log output
+        
         log_label = QLabel("Лог выполнения:")
         log_label.setFont(QFont("Segoe UI", 12, QFont.Bold))
         self.layout.addWidget(log_label)
@@ -162,7 +162,7 @@ class VisualizerWindow(QMainWindow):
         self.log_output.setStyleSheet("background-color: #17212b; border: 1px solid #2b5278;")
         self.layout.addWidget(self.log_output)
 
-        # Status bar
+        
         self.status_bar = QStatusBar()
         self.setStatusBar(self.status_bar)
 
@@ -172,13 +172,13 @@ class VisualizerWindow(QMainWindow):
         self.progress_bar.setRange(0, 100)
         self.status_bar.addPermanentWidget(self.progress_bar)
 
-        # Connect signals
+       
         self.select_btn.clicked.connect(self.select_file)
         self.clear_btn.clicked.connect(self.clear_file)
         self.run_btn.clicked.connect(self.run_analysis)
         self.save_btn.clicked.connect(self.save_report)
 
-        # Initialize checkbox statuses
+       
         self.update_checkbox_statuses()
 
     def update_checkbox_statuses(self):
@@ -195,7 +195,7 @@ class VisualizerWindow(QMainWindow):
             numeric_cols = visualizer.data.select_dtypes(include=['number']).columns.tolist()
             category_cols = visualizer.data.select_dtypes(include=['category', 'object']).columns.tolist()
 
-            # Update status for each checkbox
+        
             self.checkboxes1["Информация о данных"].set_status("Доступно", "green")
             self.checkboxes1["Информация о данных"].checkbox.setEnabled(True)
 
