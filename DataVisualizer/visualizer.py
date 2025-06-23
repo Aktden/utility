@@ -95,7 +95,6 @@ class UnifiedBrowserVisualizer:
             self.add_scatter_matrix()
 
     def add_boxplot(self, column):
-        """Добавляет диаграмму размаха для указанного столбца"""
         try:
             fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -123,7 +122,6 @@ class UnifiedBrowserVisualizer:
             print(f"Ошибка при создании диаграммы размаха: {str(e)}")
 
     def add_scatter(self, x_col, y_col):
-        """Добавляет диаграмму рассеивания"""
         try:
             fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -147,7 +145,6 @@ class UnifiedBrowserVisualizer:
             print(f"Ошибка при создании диаграммы рассеивания: {str(e)}")
 
     def add_line_chart(self):
-        """Добавляет линейный график"""
         try:
             numeric_cols = self.data.select_dtypes(include=['number']).columns
             if len(numeric_cols) >= 1:
@@ -173,7 +170,6 @@ class UnifiedBrowserVisualizer:
             print(f"Ошибка при создании линейного графика: {str(e)}")
 
     def add_histogram(self, column, bins=10):
-        """Добавляет гистограмму для указанного столбца"""
         try:
             fig, ax = plt.subplots(figsize=(10, 6))
             ax.hist(self.data[column].dropna(), bins=bins, color='skyblue', edgecolor='black')
@@ -419,7 +415,6 @@ class UnifiedBrowserVisualizer:
             print(f"Ошибка матрицы корреляций: {str(e)}")
 
     def figure_to_html_img(self, fig):
-        """Конвертирует matplotlib figure в base64 для вставки в HTML с улучшенным качеством"""
         buf = io.BytesIO()
 
         # Увеличиваем DPI и качество сохранения
